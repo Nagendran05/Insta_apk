@@ -3,7 +3,7 @@
         @forelse($post as $posts)
             <div class="bg-white rounded-xl shadow overflow-hidden">
                 {{-- User row --}}
-                <a href="/profile/{{ $posts->user_id }}" class="font-bold">
+                <a href="{{ $posts->user_id == auth()->id() ? '/profile' : '/profile/'.$posts->user_id }}" class="font-bold">
                     <div class="flex items-center p-3">
                         <img src="{{ $posts->user->profile && $posts->user->profile->avatar ? asset('storage/'.$posts->user->profile->avatar)
                             : 'https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png' }}"
@@ -16,7 +16,8 @@
                 </a>
 
                 {{-- Post image --}}
-                <a href="/profile/{{ $posts->user_id }}">
+                <a href="{{ $posts->user_id == auth()->id() ? '/profile' : '/profile/'.$posts->user_id }}">
+                {{-- <a href="/profile/{{ $posts->user_id }}"> --}}
                     <img src="{{ asset('storage/'.$posts->image) }}"class="w-full  mb-4">
                 </a>
 
@@ -55,7 +56,7 @@
                         class="flex-1 border rounded p-2 text-sm"
                         placeholder="Add a comment..." >
                         
-                        <button class="bg-blue-600 text-white px-3 rounded text-sm"><ion-icon name="send-outline"></ion-icon></button>
+                        <button class="bg-blue-600 text-white px-3 rounded text-sm">Post</button>
                     </form>
                     
                     @error("comment.$posts->id")

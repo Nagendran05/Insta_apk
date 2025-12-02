@@ -38,7 +38,7 @@ class SearchPage extends Component
     ]);
     $this->query = '';
     $this->results= [];
-    return redirect('/profile/' . $userId);
+    return redirect($userId == Auth::id() ? '/profile' : '/profile/'.$userId);
 }
     public function removeHistory($id)
 {

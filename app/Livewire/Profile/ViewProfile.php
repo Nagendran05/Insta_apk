@@ -10,7 +10,7 @@ use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Title;
 
-#[Title('view-profile')]
+#[Title('View-Profile')]
 class ViewProfile extends Component
 {
     public $profile ;

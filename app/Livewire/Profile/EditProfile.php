@@ -43,7 +43,7 @@ class EditProfile extends Component
     public function updateProfile()
     {
         $this->validate([
-            'name'  => 'required|string|max:50',
+            'name'  => 'required|string|max:50|unique:users',
             'email' => 'required|email',
             'bio'   => 'nullable|string|max:255',
             'newAvatar' => 'nullable|image|max:2048',

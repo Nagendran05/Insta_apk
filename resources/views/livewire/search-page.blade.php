@@ -8,7 +8,7 @@
                 <div class="flex justify-between items-center mt-4 mb-2">
                     <h3 class="text-sm text-gray-500">Recent Searches</h3>
             
-                    <button wire:click="clearAll" class="text-red-500 text-sm font-semibold">
+                    <button wire:click="clearAll" class="text-blue-500 text-sm font-semibold">
                         Clear All
                     </button>
                 </div>
@@ -21,7 +21,7 @@
                         $user = \App\Models\User::find($history->profile_id);
                     @endphp
                     <div class="flex justify-between items-center py-2">
-                        <a href="/profile/{{ $user->id }}" class="flex items-center gap-3 mb-2">
+                        <a href="{{ $user->id == auth()->id() ? '/profile' : '/profile/'.$user->id }}"class="flex items-center gap-3 mb-2">
 
                             {{-- Avatar --}}
                             <img src="{{ $user->profile? asset('storage/'.$user->profile->avatar) : 'https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png' }}"
@@ -32,7 +32,7 @@
                 
                         </a>
                         <button wire:click="removeHistory({{ $history->id }})">
-                            <ion-icon name="close-outline" class="text-xl"></ion-icon>
+                            <ion-icon name="close-outline" class="text-md"></ion-icon>
                         </button>
                     </div>
                 @endforeach
