@@ -16,6 +16,7 @@ class HomePage extends Component
     public $post =[];
     public  $comment = [];
     public $showComments = [];
+    public $showCommentBox = [];
 
 public function mount()
 {
@@ -28,6 +29,18 @@ public function toggleComments($postId)
 {
     $this->showComments[$postId] = !($this->showComments[$postId] ?? false);
 }
+
+public function toggleCommentBox($postId)
+{
+    // If not opened → open it
+    if (!isset($this->showCommentBox[$postId])) {
+        $this->showCommentBox[$postId] = true;
+    } else {
+        // toggle open/close
+        $this->showCommentBox[$postId] = !$this->showCommentBox[$postId];
+    }
+}
+
 
 
 public function addComment($postId)

@@ -17,6 +17,7 @@ class ViewProfile extends Component
     public $posts;
     public $followersCount;
     public $followingCount;
+    public $menuOpen = false;
 
     public function mount()
 {
