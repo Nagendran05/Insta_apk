@@ -26,7 +26,7 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $request->validate([
-            'name' => 'required|min:3',
+            'name' => 'required|min:3|unique:users',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6'
         ]);
@@ -38,7 +38,7 @@ class AuthController extends Controller
         ]);
 
         Auth::login($user);
-        return redirect('/create-profile');
+        return redirect('/create-profile')->with('success','Account Created');
     }
 
     // Login tah iruthu post agurah data vah eduka 
@@ -71,7 +71,7 @@ class AuthController extends Controller
 
     // Step 4: Login success
     Auth::login($user);
-    return redirect('/home');
+    return redirect('/home')->with('success','Login Successfully');
 }
 }
 
