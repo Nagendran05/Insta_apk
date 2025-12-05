@@ -47,6 +47,7 @@ class CreateProfile extends Component
 
         return redirect()->route('home');
     }
+    
     #[Layout('layouts.app')]
     public function render()
     {

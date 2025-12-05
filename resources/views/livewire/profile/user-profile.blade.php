@@ -1,5 +1,4 @@
 <div class="min-h-screen bg-gray-100 p-6 pt-20">
-
     {{-- Avatar --}}
     <div class="flex flex-col items-center">
         @if ($profile && $profile->avatar)

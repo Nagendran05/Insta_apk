@@ -10,6 +10,7 @@
         @endif
 
         <div class="text-center mb-4">
+
             <img src="{{ $profile?->avatar 
                 ? asset('storage/' . $profile->avatar)
                 : 'https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png' }}" class="w-24 h-24 rounded-full mx-auto mb-2">
@@ -24,6 +25,7 @@
                     class="w-24 h-24 rounded-full mx-auto">
             @endif
         </div>
+
         {{-- USERNAME --}}
         <label class="block text-sm font-semibold mb-1">Username</label>
         <input type="text" wire:model="name" class="w-full border p-2 rounded mb-3">
@@ -60,7 +62,6 @@
             {{ $showPasswordSection ? 'Hide Password Change' : 'Change Password' }}
         </button>
 
-
         {{-- PASSWORD SECTION (Shows ONLY when clicked) --}}
         @if($showPasswordSection)
             <h3 class="text-lg font-semibold mb-2">Change Password</h3>
@@ -77,6 +78,7 @@
             <label class="block text-sm font-semibold mb-1">Confirm Password</label>
             <input type="password" wire:model="confirm_password"class="w-full border p-2 rounded mb-3">
 
+            {{-- Update Btn --}}
             <button wire:click="updatePassword"
                 class="w-full bg-green-600 text-white py-2 rounded-lg mt-2">
                     Update Password

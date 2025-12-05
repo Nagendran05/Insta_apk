@@ -90,6 +90,7 @@
                     @enderror
                     
                 </div>
+
                 {{-- Caption --}}
                 <div class="pl-3 pb-3">
                     <p>
@@ -97,6 +98,8 @@
                         {{ $posts->caption }}
                     </p>
                 </div>
+
+                {{-- Show Latest 2 Comments --}}
                 <div class="ml-3">
 
                     @foreach($posts->comments->take(2) as $c)
@@ -128,7 +131,7 @@
                         </div>
                     @endif
                 </div>
-                {{-- Show Latest 2 Comments --}}
+
             </div>
 
             @empty

@@ -3,6 +3,8 @@
         <h2 class="text-xl font-bold mb-4">Create Profile</h2>
 
         <form wire:submit.prevent="save" class="space-y-4">
+            
+            {{-- Bio  --}}
             <div>
                 <label class="block text-sm mb-1">Bio</label>
                 <textarea wire:model="bio"
@@ -15,6 +17,7 @@
                 @enderror
             </div>
 
+            {{-- Avatar  --}}
             <div>
                 <label class="block text-sm mb-1">Avatar</label>
                 <input type="file" wire:model="avatar">
@@ -25,7 +28,7 @@
                     <img src="{{ $avatar->temporaryUrl() }}" class="w-16 h-16 rounded-full">
                 @endif
             </div>
-
+            {{-- Save btn  --}}
             <button class="w-full bg-blue-600 text-white py-2 rounded">
                 Save Profile
             </button>

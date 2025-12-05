@@ -23,30 +23,30 @@ class PostView extends Component
     public $likesList = [];
     public $likesCount = 0;
 
-    public function mount($id)
-    {
-        // Load the post
-        $this->post = Post::with('user.profile')->findOrFail($id);
+        public function mount($id)
+        {
+            // Load the post
+            $this->post = Post::with('user.profile')->findOrFail($id);
 
-        // Load comments
-        $this->comments = Comment::where('post_id', $id)
-            ->with('user.profile')
-            ->latest()
-            ->get();
+            // Load comments
+            $this->comments = Comment::where('post_id', $id)
+                ->with('user.profile')
+                ->latest()
+                ->get();
 
-        // Like status
-        $this->isLiked = $this->post->likes()
-            ->where('user_id', Auth::id())
-            ->exists();
+            // Like status
+            $this->isLiked = $this->post->likes()
+                ->where('user_id', Auth::id())
+                ->exists();
 
-        // Like count
-        $this->likesCount = $this->post->likes()->count();
-    }
+            // Like count
+            $this->likesCount = $this->post->likes()->count();
+        }
     
-    public function toggleComments($postId)
-    {
-        $this->showComments[$postId] = !($this->showComments[$postId] ?? false);
-    }
+        public function toggleComments($postId)
+        {
+            $this->showComments[$postId] = !($this->showComments[$postId] ?? false);
+        }
         public function toggleLike()
         {
             if ($this->isLiked) {
@@ -68,30 +68,31 @@ class PostView extends Component
         public function closeLikes(){
             $this->showLikes = false;
         } 
-    public function addComment()
-    {
-        $this->validate([
-            'commentText' => 'required|string|max:255'
-        ]);
+        public function addComment()
+        {
+            $this->validate([
+                'commentText' => 'required|string|max:255'
+            ]);
 
-        Comment::create([
-            'post_id' => $this->post->id,
-            'user_id' => Auth::id(),
-            'comment' => $this->commentText,
-        ]);
+            Comment::create([
+                'post_id' => $this->post->id,
+                'user_id' => Auth::id(),
+                'comment' => $this->commentText,
+            ]);
 
-        // Clear comment input
-        $this->commentText = '';
+            // Clear comment input
+            $this->commentText = '';
 
-        // Reload comments
-        $this->comments = Comment::where('post_id', $this->post->id)
-            ->with('user.profile')
-            ->latest()
-            ->get();
-    }
-    #[Layout('layouts.app')]
-    public function render()
-    {
-        return view('livewire.post.post-view');
-    }
+            // Reload comments
+            $this->comments = Comment::where('post_id', $this->post->id)
+                ->with('user.profile')
+                ->latest()
+                ->get();
+        }
+        
+        #[Layout('layouts.app')]
+        public function render()
+        {
+            return view('livewire.post.post-view');
+        }
 }

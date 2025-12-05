@@ -8,15 +8,14 @@
             <img src="{{ 
                 $f->profile && $f->profile->avatar
                     ? asset('storage/'.$f->profile->avatar)
-                    : 'https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png'
-            }}"
-            class="w-10 h-10 rounded-full">
+                    : 'https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png'}}"
+                class="w-10 h-10 rounded-full">
 
             {{-- Username --}}
             <p class="font-semibold">
                 {{ $f->name }}
             </p>
-
+            
         </a>
     @empty
         <p class="text-gray-500">Not following anyone.</p>

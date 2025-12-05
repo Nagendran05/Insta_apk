@@ -36,7 +36,7 @@
         <div class="fixed inset-0 backdrop-blur-sm
             flex items-center justify-center" wire:click="closeLikes">
             <div class="bg-white rounded-xl w-80 border max-h-96 overflow-y-auto p-4" wire:click.stop>
-                            
+                 {{-- Likes --}}
                 <div class="flex justify-between items-center mb-3">
                     <h2 class="text-lg font-bold">Liked by</h2>
                     <button wire:click="closeLikes">
@@ -47,12 +47,10 @@
                 @forelse($likesList as $like)
                     <a href="{{ $post->user_id == auth()->id() ? '/profile' : '/profile/'.$post->user_id }}" 
                         class="flex items-center gap-3 py-2">
-
                         {{-- Avatar --}}
                         <img src="{{ $like->user->profile?->avatar 
                             ? asset('storage/'.$like->user->profile->avatar)
                             : 'https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png' }}" class="w-10 h-10 rounded-full">
-
                         {{-- Name --}}
                             <p class="font-semibold">{{ $like->user->name }}</p>
                     </a>
