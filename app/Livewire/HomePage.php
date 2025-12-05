@@ -14,8 +14,10 @@ use Livewire\Attributes\Title;
 class HomePage extends Component
 {
     public $post =[];
-    public  $comment = [];
+    public $comment = [];
     public $showComments = [];
+    public $showLikes = false;
+    public $likesList = [];
     public $showCommentBox = [];
 
 public function mount()
@@ -25,21 +27,31 @@ public function mount()
         ->get();
 }
 
+public function showLikedUsers($postId){
+    $this->likesList = Like::where('post_id',$postId)->with('user.profile')->get();
+
+    $this->showLikes = true;
+}
+
+public function closeLikes(){
+    $this->showLikes = false;
+} 
+
 public function toggleComments($postId)
 {
     $this->showComments[$postId] = !($this->showComments[$postId] ?? false);
 }
 
-public function toggleCommentBox($postId)
-{
-    // If not opened → open it
-    if (!isset($this->showCommentBox[$postId])) {
-        $this->showCommentBox[$postId] = true;
-    } else {
-        // toggle open/close
-        $this->showCommentBox[$postId] = !$this->showCommentBox[$postId];
-    }
-}
+// public function toggleCommentBox($postId)
+// {
+//     // If not opened → open it
+//     if (!isset($this->showCommentBox[$postId])) {
+//         $this->showCommentBox[$postId] = true;
+//     } else {
+//         // toggle open/close
+//         $this->showCommentBox[$postId] = !$this->showCommentBox[$postId];
+//     }
+// }
 
 
 

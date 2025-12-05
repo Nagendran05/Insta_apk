@@ -29,7 +29,6 @@
 
                             {{-- Username --}}
                             <p class="font-semibold">{{ $user->name }}</p>
-                
                         </a>
                         <button wire:click="removeHistory({{ $history->id }})">
                             <ion-icon name="close-outline" class="text-md"></ion-icon>

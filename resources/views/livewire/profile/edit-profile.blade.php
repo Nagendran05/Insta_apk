@@ -12,7 +12,7 @@
         <div class="text-center mb-4">
             <img src="{{ $profile?->avatar 
                 ? asset('storage/' . $profile->avatar)
-                : 'https://i.pravatar.cc/100' }}" class="w-24 h-24 rounded-full mx-auto mb-2">
+                : 'https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png' }}" class="w-24 h-24 rounded-full mx-auto mb-2">
 
             {{-- NEW AVATAR UPLOAD --}}
             <input type="file" wire:model="newAvatar" class="mt-2 px-5">

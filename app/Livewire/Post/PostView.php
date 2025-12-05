@@ -5,6 +5,7 @@ namespace App\Livewire\Post;
 use Livewire\Component;
 use App\Models\Post;
 use App\Models\Comment;
+use App\Models\Like;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
@@ -15,8 +16,11 @@ class PostView extends Component
 {
     public $post;
     public $comments = [];
+    public $showComments = [];
     public $commentText = '';
     public $isLiked = false;
+    public $showLikes = false;
+    public $likesList = [];
     public $likesCount = 0;
 
     public function mount($id)
@@ -38,20 +42,32 @@ class PostView extends Component
         // Like count
         $this->likesCount = $this->post->likes()->count();
     }
-
-    public function toggleLike()
+    
+    public function toggleComments($postId)
     {
-        if ($this->isLiked) {
-            $this->post->likes()->where('user_id', Auth::id())->delete();
-            $this->isLiked = false;
-            $this->likesCount--;
-        } else {
-            $this->post->likes()->create(['user_id' => Auth::id()]);
-            $this->isLiked = true;
-            $this->likesCount++;
-        }
+        $this->showComments[$postId] = !($this->showComments[$postId] ?? false);
     }
+        public function toggleLike()
+        {
+            if ($this->isLiked) {
+                $this->post->likes()->where('user_id', Auth::id())->delete();
+                $this->isLiked = false;
+                $this->likesCount--;
+            } else {
+                $this->post->likes()->create(['user_id' => Auth::id()]);
+                $this->isLiked = true;
+                $this->likesCount++;
+            }
+        }
+        public function showLikedUsers($postId){
+            $this->likesList = Like::where('post_id',$postId)->with('user.profile')->get();
 
+            $this->showLikes = true;
+        }
+
+        public function closeLikes(){
+            $this->showLikes = false;
+        } 
     public function addComment()
     {
         $this->validate([
