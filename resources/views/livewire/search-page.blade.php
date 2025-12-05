@@ -5,16 +5,14 @@
             <input type="text" wire:model.live="query" placeholder="Search users..."class="w-full p-3 rounded-xl border">
             @if ($query === '')
                 @if($oldSearches && count($oldSearches) > 0)
-                <div class="flex justify-between items-center mt-4 mb-2">
-                    <h3 class="text-sm text-gray-500">Recent Searches</h3>
-            
-                    <button wire:click="clearAll" class="text-blue-500 text-sm font-semibold">
-                        Clear All
-                    </button>
-                </div>
+                    <div class="flex justify-between items-center mt-4 mb-2">
+                        <h3 class="text-sm text-gray-500">Recent Searches</h3>
+                
+                        <button wire:click="clearAll" class="text-blue-500 text-sm font-semibold">
+                            Clear All
+                        </button>
+                    </div>
                 @endif
-
-    
     
                 @foreach($oldSearches as $history)
                     @php

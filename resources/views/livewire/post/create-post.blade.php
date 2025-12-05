@@ -1,11 +1,11 @@
 <div>
-    <div class="min-h-screen flex pt-20 justify-center bg-gray-100 pb-20">
+    <div class="min-h-screen flex py-20 justify-center bg-gray-100">
         <div class=" p-6 w-full">
             <h2 class="text-xl font-bold mb-4">Create Post</h2>
+            {{-- Post Form  --}}
             <form wire:submit.prevent="save" class="space-y-4">
                 <div>
                     <label class="block text-sm mb-1 font-semibold">Image</label>
-
                     <div class="flex items-center">
                         <label for="imageInput" class="cursor-pointer hover:bg-gray-200 hover:text-black px-4 py-2 rounded-lg text-sm bg-gray-400 text-white transition">
                             Choose Image

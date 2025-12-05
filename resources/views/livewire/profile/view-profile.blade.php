@@ -1,4 +1,3 @@
-
 <div class="min-h-screen bg-gray-100 p-6">
     <div class="relative">
        {{-- GLOBAL MENU ICON - FIXED, ALWAYS VISIBLE --}}
@@ -95,5 +94,3 @@
                 <p class="text-gray-400 col-span-3 text-center">No Posts</p>
             @endforelse
         </div>
-    </div>
-</div>
