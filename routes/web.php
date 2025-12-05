@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Livewire\EditPost;
 use App\Livewire\Profile\CreateProfile;
 use App\Livewire\Profile\EditProfile;
 use App\Livewire\Post\CreatePost;
@@ -27,10 +28,11 @@ Route::middleware('auth')->group(function () {
     // Profile Folder 
     Route::get('/edit-profile', EditProfile::class)->name('profile.edit');
     Route::get('/profile',ViewProfile::class)->name('profile.view');
-    Route::get('/profile/{id}',UserProfile::class)->name('user-profile');
+    Route::get('/profile/{id?}',UserProfile::class)->name('user-profile');
     Route::get('/create-profile', CreateProfile::class)->name('profile.create');
     Route::get('/profile/{id}/followers',FollowersList::class)->name('profile.followers');
     Route::get('/profile/{id}/following',FollowingList::class)->name('profile.following');
+    // Route::get('post/{id}/edit',EditPost::class)->name('post.edit');
     
     // Home page 
     Route::get('/home', HomePage::class)->name('home');

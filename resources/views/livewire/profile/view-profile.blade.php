@@ -32,7 +32,7 @@
             </button>
         @endif
         
-        <div class=" pt-15 rounded-xl mx-auto">
+        <div class=" pt-15 rounded-xl ">
             <div class="flex">
 
                 <img src="{{ $profile?->avatar 
@@ -48,13 +48,13 @@
                     {{-- Followers / Following --}}
                     <div class="flex justify-center gap-8 text-center mt-3 ml-3">
                         <div>
-                            <a href="/profile/{{ $profile->user_id }}/followers" class="text-center">
+                            <a href="/profile/{{ $profile?->user_id }}/followers" class="text-center">
                                 <p class="text-xl font-semibold">{{ $followersCount }}</p>
                                 <p class="text-sm text-gray-500">Followers</p>
                             </a>
                         </div>
                     <div>
-                    <a href="/profile/{{ $profile->user_id }}/following" class="text-center">
+                    <a href="/profile/{{ $profile?->user_id }}/following" class="text-center">
                         <p class="text-xl font-semibold">{{ $followingCount }}</p>
                         <p class="text-sm text-gray-500">Following</p>
                     </a>
@@ -70,7 +70,7 @@
         </div> --}}
         
         {{-- Bio --}}
-        <p class="text-gray-600 mb-0 ml-2">
+        <p class="text-gray-600 mb-0 ml-1">
             {{ $profile->bio ?? 'No bio added' }}
         </p>
 
@@ -84,7 +84,7 @@
         </button>
     </div> --}}
 
-    {{-- Edit Profile --}}
+    {{-- Posts --}}
         <h3 class="mt-18 mb-2 font-semibold text-lg">Posts</h3>
         <div class="grid grid-cols-3 gap-3">
             @forelse ($posts as $p)
