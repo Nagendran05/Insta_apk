@@ -113,7 +113,6 @@ class EditProfile extends Component
         return redirect('/profile');
     }
 
-
     #[Layout('layouts.app')]
     public function render()
     {

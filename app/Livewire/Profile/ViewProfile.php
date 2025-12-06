@@ -43,7 +43,6 @@ class ViewProfile extends Component
     #[Layout('layouts.app')]
     public function render()
     {
-        $this->profile = Profile::where('user_id', Auth::id())->first();
-        return view('livewire.profile.view-profile',['user'=>Auth::user()]);
+        return view('livewire.profile.view-profile');
     }
 }
