@@ -8,8 +8,7 @@
             <div>
                 <label class="block text-sm mb-1">Bio</label>
                 <textarea wire:model="bio"
-                            class="w-full border rounded p-2"
-                            rows="3"></textarea>
+                            class="w-full border rounded p-2" rows="3"></textarea>
                 @error('bio') 
                     <p class="text-red-500 text-xs mt-1">
                         {{ $message }}
@@ -28,6 +27,7 @@
                     <img src="{{ $avatar->temporaryUrl() }}" class="w-16 h-16 rounded-full">
                 @endif
             </div>
+            
             {{-- Save btn  --}}
             <button class="w-full bg-blue-600 text-white py-2 rounded">
                 Save Profile

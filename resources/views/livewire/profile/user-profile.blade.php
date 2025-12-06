@@ -1,4 +1,4 @@
-<div class="min-h-screen bg-gray-100 p-6 pt-20">
+<div class="min-h-screen bg-gray-100 p-6 py-20">
     {{-- Avatar --}}
     <div class="flex flex-col items-center">
         @if ($profile && $profile->avatar)
@@ -24,10 +24,12 @@
             <p class="text-xl font-bold">{{ $followersCount }}</p>
             <p class="text-sm text-gray-500">Followers</p>
         </div>
+
         <div>
             <p class="text-xl font-bold">{{ $followingCount }}</p>
             <p class="text-sm text-gray-500">Following</p>
         </div>
+        
     </div>
 
     {{-- Bio --}}
@@ -48,5 +50,4 @@
             <p class="text-gray-400 col-span-3 text-center">No Posts</p>
         @endforelse
     </div>
-
 </div>
